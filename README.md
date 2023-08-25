@@ -1,6 +1,6 @@
 # URL-Shortner
 
-URL Shortner using Node.js , MongoDB , Express.js , shortid
+URL Shortner API using Node.js , MongoDB , POSTMAN , Express.js , SHORTID
 
 Api to convert url into short url's for redirection
 
