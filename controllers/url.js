@@ -1,4 +1,4 @@
-const {nanoid}=require('nanoid');
+const shortid=require('shortid');
 const url=require('../models/url')
 async function generateNewShortURL(req,res){
     const body=req.body;
@@ -7,7 +7,7 @@ async function generateNewShortURL(req,res){
             error:'URL is required'
         });
     }
-    const shortId=nanoid(8);
+    const shortId=shortid(8);
     await url.create({
         shortId: shortId,
         redirectURL: body.url,
@@ -16,7 +16,15 @@ async function generateNewShortURL(req,res){
     );
     return res.json({id:shortId});
 }
+async function getAnalytics(req,res){
+    shortId=req.params.shortId;
+    const result=await url.findOne({ shortId });
+    return res.json({
+        totalClicks: result.visitHistory.length,
+        analytics: result.visitHistory
+    });
+}
 module.exports={
         generateNewShortURL,
-        
+        getAnalytics
 }
