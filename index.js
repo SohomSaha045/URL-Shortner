@@ -4,7 +4,7 @@ const router = require("./routes/url");
 const { connection } = require("./connectMongo");
 const url = require("./models/url");
 const app = express();
-const PORT = 8001;
+const PORT = process.env.PORT || 8000;
 connection(process.env.db_url).then(() => {
   console.log("MongoDb Connected");
 });
