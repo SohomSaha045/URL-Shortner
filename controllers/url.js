@@ -3,7 +3,7 @@ const url=require('../models/url')
 async function generateNewShortURL(req,res){
     const body=req.body;
     if(!body.url){
-        return res.statu(400).json({
+        return res.status(400).json({
             error:'URL is required'
         });
     }
