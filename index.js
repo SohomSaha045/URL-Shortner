@@ -16,7 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use('/auth',routerAuth);
-app.use("/url",restrictToLoggedInUser,router);
+// app.use("/url",restrictToLoggedInUser,router);
+app.use("/url",router);
 app.get("/:shortId", async (req, res) => {
   const shortId = req.params.shortId;
   const entry = await url.findOneAndUpdate(
